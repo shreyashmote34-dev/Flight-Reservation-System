@@ -1,191 +1,50 @@
-# Flight-Reservation-System
-Flight Reservation System using C++ Searching and Sorting
+# Flight Reservation System
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
+## Project Overview
+The Flight Reservation System is a C++ based console application that helps users manage flight details and book flight tickets.
 
-struct Flight {
-    int id;
-    string name;
-    string source;
-    string destination;
-    float price;
-    int seats;
-};
+This project demonstrates the use of Searching and Sorting techniques in Data Structures.
 
-vector<Flight> flights;
+## Technologies Used
+- Programming Language: C++
+- Header Files: iostream, vector, algorithm
+- Concepts: Structure, Vector, Searching and Sorting
 
-// Add Flight
-void addFlight() {
-    Flight f;
+## Features
+1. Add Flight Details
+2. Display Available Flights
+3. Search Flight
+4. Sort Flights
+5. Book Flight Tickets
+6. Exit System
 
-    cout << "\nEnter Flight ID: ";
-    cin >> f.id;
+## Data Stored
+The system maintains the following flight information:
+- Flight ID
+- Flight Name
+- Source
+- Destination
+- Ticket Price
+- Available Seats
 
-    cout << "Enter Flight Name: ";
-    cin >> f.name;
+## Data Structures and Algorithms
+- Structure
+- Vector
+- Searching
+- Sorting
 
-    cout << "Enter Source: ";
-    cin >> f.source;
+## How to Run the Project
 
-    cout << "Enter Destination: ";
-    cin >> f.destination;
+1. Download or clone the repository.
+2. Open the project in a C++ IDE.
+3. Compile the source code.
+4. Run the program.
 
-    cout << "Enter Ticket Price: ";
-    cin >> f.price;
+## Project Repository
+Flight Reservation System using C++ Searching and Sorting.
 
-    cout << "Enter Available Seats: ";
-    cin >> f.seats;
+## Author
+Shreyash Mote
 
-    flights.push_back(f);
-
-    cout << "\nFlight Added Successfully!\n";
-}
-
-// Display Flights
-void displayFlights() {
-    if (flights.empty()) {
-        cout << "\nNo Flights Available!\n";
-        return;
-    }
-
-    cout << "\n--- Available Flights ---\n";
-
-    for (const auto &f : flights) {
-        cout << "\nFlight ID: " << f.id;
-        cout << "\nName: " << f.name;
-        cout << "\nSource: " << f.source;
-        cout << "\nDestination: " << f.destination;
-        cout << "\nPrice: Rs. " << f.price;
-        cout << "\nSeats: " << f.seats << "\n";
-    }
-}
-
-// Linear Search
-void searchFlight() {
-    int id;
-    bool found = false;
-
-    cout << "\nEnter Flight ID to Search: ";
-    cin >> id;
-
-    for (const auto &f : flights) {
-        if (f.id == id) {
-            cout << "\nFlight Found!";
-            cout << "\nFlight Name: " << f.name;
-            cout << "\nSource: " << f.source;
-            cout << "\nDestination: " << f.destination;
-            cout << "\nPrice: Rs. " << f.price << "\n";
-            found = true;
-            break;
-        }
-    }
-
-    if (!found)
-        cout << "\nFlight Not Found!\n";
-}
-
-// Bubble Sort by Price
-void sortFlights() {
-    for (int i = 0; i < (int)flights.size() - 1; i++) {
-        for (int j = 0; j < (int)flights.size() - i - 1; j++) {
-            if (flights[j].price > flights[j + 1].price) {
-                swap(flights[j], flights[j + 1]);
-            }
-        }
-    }
-
-    cout << "\nFlights Sorted by Price!\n";
-    displayFlights();
-}
-
-// Book Ticket
-void bookTicket() {
-    int id, count;
-    string passenger;
-    bool found = false;
-
-    cout << "\nEnter Flight ID: ";
-    cin >> id;
-
-    for (auto &f : flights) {
-        if (f.id == id) {
-            found = true;
-
-            cout << "Enter Passenger Name: ";
-            cin >> passenger;
-
-            cout << "Enter Number of Seats: ";
-            cin >> count;
-
-            if (count > 0 && count <= f.seats) {
-                f.seats -= count;
-
-                cout << "\nTicket Booked Successfully!";
-                cout << "\nPassenger: " << passenger;
-                cout << "\nFlight: " << f.name;
-                cout << "\nTotal Amount: Rs. "
-                     << f.price * count << "\n";
-            } else {
-                cout << "\nSeats Not Available!\n";
-            }
-            break;
-        }
-    }
-
-    if (!found)
-        cout << "\nFlight Not Found!\n";
-}
-
-// Main Function
-int main() {
-    int choice;
-
-    do {
-        cout << "\n===== FLIGHT RESERVATION SYSTEM =====";
-        cout << "\n1. Add Flight";
-        cout << "\n2. Display Flights";
-        cout << "\n3. Search Flight";
-        cout << "\n4. Sort Flights by Price";
-        cout << "\n5. Book Flight Ticket";
-        cout << "\n6. Exit";
-
-        cout << "\n\nEnter Your Choice: ";
-        cin >> choice;
-
-        switch (choice) {
-            case 1:
-                addFlight();
-                break;
-
-            case 2:
-                displayFlights();
-                break;
-
-            case 3:
-                searchFlight();
-                break;
-
-            case 4:
-                sortFlights();
-                break;
-
-            case 5:
-                bookTicket();
-                break;
-
-            case 6:
-                cout << "\nThank You!\n";
-                break;
-
-            default:
-                cout << "\nInvalid Choice!\n";
-        }
-
-    } while (choice != 6);
-
-    return 0;
-}
-
+## Conclusion
+This project demonstrates how searching and sorting techniques can be used in a Flight Reservation System to manage flight information and ticket bookings efficiently.
